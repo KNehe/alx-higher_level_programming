@@ -8,39 +8,43 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *c1, *c2;
+	listint_t *c1;
 	unsigned int len = 0, i = 0;
-	int arr[1024];
+	unsigned int *arr;
 
-	/* if head is null hence no list, no palindrome */
 	if (head == NULL)
 		return (0);
-	/* if head is empty then palindrome */
 	if (*head == NULL)
 		return (1);
 	c1 = *head;
-	c2 = *head;
-	/* find length of linked list */
 	while (c1 != NULL)
 	{
 		c1 = c1->next;
 		len++;
 	}
-	/* one item is panlindrome */
 	if (len == 1)
 		return (1);
-	/* assign numbers to array */
-	for (i = 0; c2 != NULL; i++)
+	arr = malloc(sizeof(int) * len);
+	if (arr == NULL)
 	{
-		arr[i] = c2->n;
-		c2 = c2->next;
+		free(arr);
+		return (0);
 	}
-	/* compare start of array with end of array */
+	c1 = *head;
+	for (i = 0; c1 != NULL; i++)
+	{
+		arr[i] = c1->n;
+		c1 = c1->next;
+	}
 	len = len - 1;
 	for (i = 0; i <= len / 2; i++)
 	{
 		if (arr[i] != arr[len - i])
+		{ 
+			free(arr);
 			return (0);
+		}
 	}
+	free(arr);
 	return (1);
 }
