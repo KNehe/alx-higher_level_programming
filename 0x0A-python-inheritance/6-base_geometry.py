@@ -1,4 +1,4 @@
-#!.usr/bin/python3
+#!/usr/bin/python3
 """
 Module 6-base_geometry
 
