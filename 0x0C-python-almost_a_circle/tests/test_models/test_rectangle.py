@@ -107,3 +107,11 @@ class TestRectangle(unittest.TestCase):
             Rectangle(2, 3).display()
             b = buff.getvalue()
         self.assertEqual(b, "##\n##\n##\n")
+
+    def test_str(self):
+        """
+        should override __str__
+        and return [Rectangle] (<id>) <x>/<y> - <width>/<height>
+        """
+        r = Rectangle(4, 6, 2, 1, 12)
+        self.assertEqual(str(r), "[Rectangle] (12) 2/1 - 4/6")
