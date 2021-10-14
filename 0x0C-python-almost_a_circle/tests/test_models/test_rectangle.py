@@ -3,6 +3,8 @@
 import unittest
 from models.rectangle import Rectangle
 import pycodestyle
+from io import StringIO
+from contextlib import redirect_stdout
 
 
 class TestPycodeStyle(unittest.TestCase):
@@ -95,3 +97,13 @@ class TestRectangle(unittest.TestCase):
 
         r3 = Rectangle(8, 7, 0, 0, 12)
         self.assertTrue(r3.area() == 56)
+
+    def test_display(self):
+        """
+        Should print rectangle using  '#'
+        According to width and height
+        """
+        with StringIO() as buff, redirect_stdout(buff):
+            Rectangle(2, 3).display()
+            b = buff.getvalue()
+        self.assertEqual(b, "##\n##\n##\n")
