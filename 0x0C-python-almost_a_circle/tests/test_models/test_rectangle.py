@@ -84,3 +84,14 @@ class TestRectangle(unittest.TestCase):
         """Should fail with less args passed"""
         with self.assertRaises(TypeError):
             Rectangle(3)
+
+    def test_area(self):
+        """Should calculate area of rectangle"""
+        r1 = Rectangle(3, 2)
+        self.assertTrue(r1.area() == 6)
+
+        r2 = Rectangle(2, 10)
+        self.assertTrue(r2.area() == 20)
+
+        r3 = Rectangle(8, 7, 0, 0, 12)
+        self.assertTrue(r3.area() == 56)
