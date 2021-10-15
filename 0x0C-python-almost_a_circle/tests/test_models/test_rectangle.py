@@ -162,3 +162,12 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(r), '[Rectangle] (44) 770/880 - 990/2')
         r.update(nokey=1000, invalid=2000, testing=3000, id=4000)
         self.assertEqual(str(r), '[Rectangle] (4000) 770/880 - 990/2')
+
+    def test_to_dictionary(self):
+        """Should return dict form of rectangle"""
+        r = Rectangle(10, 2, 1, 9)
+        r_dict = r.to_dictionary()
+        r1 = Rectangle(5, 3)
+        r1.update(**r_dict)
+        self.assertEqual(type(r_dict), dict)
+        self.assertFalse(r == r1)
