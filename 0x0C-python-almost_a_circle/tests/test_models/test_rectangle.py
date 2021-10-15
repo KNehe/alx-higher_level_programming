@@ -98,7 +98,7 @@ class TestRectangle(unittest.TestCase):
         r3 = Rectangle(8, 7, 0, 0, 12)
         self.assertTrue(r3.area() == 56)
 
-    def test_display(self):
+    def test_display_no_xy(self):
         """
         Should print rectangle using  '#'
         According to width and height
@@ -107,6 +107,12 @@ class TestRectangle(unittest.TestCase):
             Rectangle(2, 3).display()
             b = buff.getvalue()
         self.assertEqual(b, "##\n##\n##\n")
+
+    def test_display_with_xy(self):
+        with StringIO() as buf, redirect_stdout(buf):
+            Rectangle(5, 3, 1, 2).display()
+            b2 = buf.getvalue()
+        self.assertEqual(b2, '\n\n #####\n #####\n #####\n')
 
     def test_str(self):
         """
