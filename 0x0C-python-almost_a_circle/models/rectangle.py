@@ -137,5 +137,5 @@ class Rectangle(Base):
         d["width"] = self.width
         d["height"] = self.height
         d["x"] = self.x
-        d["x"] = self.x
+        d["y"] = self.y
         return d
