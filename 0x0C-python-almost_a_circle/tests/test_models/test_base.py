@@ -207,6 +207,30 @@ class TestBase(unittest.TestCase):
             self.assertEqual(type(recs), list)
             self.assertEqual(len(recs), 0)
 
+        def test_save_load_csv_file(self):
+            """Tests serialization and deserialization of csv file"""
+            r = Rectangle(2, 3, 4, 5, 6)
+            r2 = Rectangle(7, 8, 9, 10, 11)
+            rlistinput = [r, r2]
+            Rectangle.save_to_file_csv(rlistinput)
+            rlistoutput = Rectangle.load_from_file_csv()
+            self.assertTrue(rlistinput[0].__str__()
+                            == rlistoutput[0].__str__())
+            self.assertTrue(rlistinput[1].__str__()
+                            == rlistoutput[1].__str__())
+
+        def test_square_csv(self):
+            """Test using square"""
+            s1 = Square(5)
+            s2 = Square(7, 9, 1)
+            slistinput = [s1, s2]
+            Square.save_to_file_csv(slistinput)
+            slistoutput = Square.load_from_file_csv()
+            self.assertTrue(slistinput[0].__str__()
+                            == slistoutput[0].__str__())
+            self.assertTrue(slistinput[1].__str__()
+                            == slistoutput[1].__str__())
+
 
 class TestPycodeStyle(unittest.TestCase):
     """Test PycodeStyle on models/base.py and tests/tests/test_base.py"""
