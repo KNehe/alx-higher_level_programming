@@ -76,8 +76,8 @@ class Base:
         try:
             with open(filename, "r") as f:
                 obj_ls = cls.from_json_string(f.read())
-                for i, j in enumerate(obj_ls):
-                    objs.append(cls.create(**obj_ls[i]))
+            for i, j in enumerate(obj_ls):
+                objs.append(cls.create(**obj_ls[i]))
         except Exception:
             pass
         return objs
