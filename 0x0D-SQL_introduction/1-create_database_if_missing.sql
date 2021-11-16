@@ -1,0 +1,3 @@
+-- Creates the database hbtn_0c_0 in your MySQL serve
+-- If the database hbtn_0c_0 already exists, script should not fail
+CREATE DATABASE IF NOT EXISTS hbtn_0c_0;
